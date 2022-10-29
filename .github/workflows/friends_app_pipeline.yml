@@ -1,0 +1,52 @@
+name: Friends App Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+jobs:
+  deployment_pipeline:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: create env vars
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_MONGODB_URI: ${{ secrets.ENV_MONGODB_URI }}
+          envkey_TEST_MONGODB_URI: ${{ secrets.ENV_TEST_MONGODB_URI }}
+          envkey_PORT: ${{ secrets.ENV_PORT }}
+          envkey_SECRET: ${{ secrets.ENV_APP_SECRET }}
+      - name: install
+        run: npm install
+      - name: lint
+        run: npm run lint
+      - name: test
+        run: npm run test
+      - name: Deploy to Heroku
+        if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '#skip') }}
+        uses: akhileshns/heroku-deploy@3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "dz-friends-app"
+          heroku_email: "manglynho@gmail.com"
+          healthcheck: "https://dz-friends-app.herokuapp.com"
+          rollbackonhealthchefailed: true
+  tag_release:
+      needs: [deployment_pipeline]
+      runs-on: ubuntu-20.04
+      steps:
+        - uses: actions/checkout@v2
+          with:
+            fetch-depth: '0'
+        - name: Tagging
+          if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '#skip') }}
+          uses: anothrNick/github-tag-action@1.36.0
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            DEFAULT_BUMP: "patch"
