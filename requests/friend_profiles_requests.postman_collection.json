@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "e208403d-a9ca-4b4d-8473-ba2658f59dfe",
+		"name": "friend_profiles_requests",
+		"description": "Requests to profile backend endpoints\n\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all profiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/v1/friends/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"friends",
+						""
+					]
+				},
+				"description": "get all profiles from db in json format"
+			},
+			"response": []
+		},
+		{
+			"name": "get a profile friends",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/v1/friends/5a422a851b54a676234d1900",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"friends",
+						"5a422a851b54a676234d1900"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a single profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/v1/friends/friendsList/5a422a851b54a676234d1899",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"friends",
+						"friendsList",
+						"5a422a851b54a676234d1899"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save a profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"img\": \"https://fakedetail.com/userface_image/male/male20161083966702087.png\",\n    \"first_name\": \"Ray\",\n    \"last_name\": \"Donovan\",\n    \"phone\": \"(820) 289-1987\",\n    \"address_1\": \"5190 Center Court Drive\",\n    \"city\": \"Spring\",\n    \"state\": \"TX\",\n    \"zipcode\": 77370,\n    \"bio\": \"I'm very choosy. I'm also very suspicious, and very irrational and I have a very short temper. I'm also extremely jealous and slow to forgive. Just so you know.\",\n    \"photos\":[\n      \"https://picsum.photos/720/360\",\n      \"https://picsum.photos/720/360\",\n      \"https://picsum.photos/720/360\"\n    ],\n    \"statuses\": [\n      \"Developing something amazing\",\n      \"This could be interesting....\",\n      \"Man, life is so good\",\n      \"There is nothing quite like a good friend\",\n      \"Take a look around you, everything is awesome\", \"What is the point of all of this\"\n    ],\n    \"available\": true,\n    \"friends\": [\"5a422a851b54a676234d1902\",\"5a422a851b54a676234d1898\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/v1/friends/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"friends",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get shortest conn from two friends",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/v1/friends/shortestConnection/5a422a851b54a676234d1899/5a422a851b54a676234d1903",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"friends",
+						"shortestConnection",
+						"5a422a851b54a676234d1899",
+						"5a422a851b54a676234d1903"
+					],
+					"query": [
+						{
+							"key": "flightId",
+							"value": "5a422a851b54a676234d1898",
+							"disabled": true
+						},
+						{
+							"key": "sortBy",
+							"value": "date",
+							"disabled": true
+						},
+						{
+							"key": "OrderBy",
+							"value": "asc",
+							"disabled": true
+						},
+						{
+							"key": "comment",
+							"value": "this",
+							"description": "use any field of the schema",
+							"disabled": true
+						},
+						{
+							"key": "currentPage",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "pageSize",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				},
+				"description": "given two ids return the shortes distance thru friends connections "
+			},
+			"response": []
+		},
+		{
+			"name": "update a profile",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Guillermo\",\n    \"last_name\": \"Felix\"    \n}"
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/v1/friends/635843a5626bca29468679ed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"friends",
+						"635843a5626bca29468679ed"
+					]
+				},
+				"description": "update a profile entry"
+			},
+			"response": []
+		},
+		{
+			"name": "remove a profile",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/v1/friends/635843a5626bca29468679ed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"friends",
+						"635843a5626bca29468679ed"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

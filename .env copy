@@ -1,0 +1,4 @@
+MONGODB_URI = 'mongodb+srv://fullstack_user:13nleZauFCKlLwQK@reinercluster.g2w7s.mongodb.net/friends-list-app?retryWrites=true&w=majority'
+TEST_MONGODB_URI = 'mongodb+srv://fullstack_user:13nleZauFCKlLwQK@reinercluster.g2w7s.mongodb.net/friends-list-app-test?retryWrites=true&w=majority'
+PORT=3001
+SECRET='999999900000'

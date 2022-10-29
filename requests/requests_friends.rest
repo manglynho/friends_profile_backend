@@ -1,0 +1,56 @@
+###
+GET http://localhost:3001/api/v1/friends
+###
+GET http://localhost:3001/api/v1/friends/5a422a851b54a676234d1900
+###
+GET http://localhost:3001/api/v1/friends/friendsList/5a422a851b54a676234d1899
+###
+GET http://localhost:3001/api/v1/friends/shortestConnection/5a422a851b54a676234d1897/5a422a851b54a676234d1899
+###
+GET http://localhost:3001/api/v1/friends/shortestConnection/5a422a851b54a676234d1898/5a422a851b54a676234d1899
+###
+GET http://localhost:3001/api/v1/friends/shortestConnection/5a422a851b54a676234d1899/5a422a851b54a676234d1898
+###
+GET http://localhost:3001/api/v1/friends/shortestConnection/5a422a851b54a676234d1901/5a422a851b54a676234d1902
+###
+GET http://localhost:3001/api/v1/friends/shortestConnection/5a422a851b54a676234d1899/5a422a851b54a676234d1903
+###
+POST http://localhost:3001/api/v1/friends/ HTTP/1.1
+content-type: application/json
+
+{
+    "img": "https://fakedetail.com/userface_image/male/male20161083966702087.png",
+    "first_name": "Ray",
+    "last_name": "Donovan",
+    "phone": "(820) 289-1987",
+    "address_1": "5190 Center Court Drive",
+    "city": "Spring",
+    "state": "TX",
+    "zipcode": 77370,
+    "bio": "I'm very choosy. I'm also very suspicious, and very irrational and I have a very short temper. I'm also extremely jealous and slow to forgive. Just so you know.",
+    "photos":[
+      "https://picsum.photos/720/360",
+      "https://picsum.photos/720/360",
+      "https://picsum.photos/720/360"
+    ],
+    "statuses": [
+      "Developing something amazing",
+      "This could be interesting....",
+      "Man, life is so good",
+      "There is nothing quite like a good friend",
+      "Take a look around you, everything is awesome", "What is the point of all of this"
+    ],
+    "available": true,
+    "friends": ["5a422a851b54a676234d1902","5a422a851b54a676234d1898"]
+}
+### Use id returned from POST
+DELETE  http://localhost:3001/api/v1/friends/635c27c2c1a40c9805115434 HTTP/1.1
+content-type: application/json
+### Use id returned from POST
+PUT http://localhost:3001/api/v1/friends/635c27c2c1a40c9805115434 HTTP/1.1
+content-type: application/json
+
+{
+    "first_name": "Guillermo",
+    "last_name": "Felix"    
+}
