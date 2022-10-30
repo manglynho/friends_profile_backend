@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "A Technical test !",
   "main": "index.ts",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "NODE_ENV=production ts-node index.ts",
+    "start" : "NODE_ENV=production node dist/index.js",
+    "postinstall": "tsc",
     "tsc": "tsc",
     "dev": "ts-node-dev index.ts",
     "lint": "eslint .",
