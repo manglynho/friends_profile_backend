@@ -93,4 +93,4 @@ const friendSchema = z.object({
     }),
 });
 
-export default friendSchema
+export default friendSchema;

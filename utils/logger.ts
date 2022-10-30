@@ -1,17 +1,15 @@
-/* eslint-disable no-undef */
-
-const info = (...params: any[]) => {
+const info = (...params: Array<unknown>) => {
   if (process.env.NODE_ENV !== 'test') {
-    console.log(...params)
+    console.log(...params);
   }
-}
-const error = (...params: any[]) => {
+};
+const error = (...params: Array<unknown>) => {
   if (process.env.NODE_ENV !== 'test') {
-    console.error(...params)
+    console.error(...params);
   }
-}
+};
 
 export default {
   info,
   error,
-}
+};

@@ -17,8 +17,9 @@ export interface FriendEntry {
     zipcode: number;
     bio: string;
     photos?: Array<string>;
-    statuses?: Array<String>;
-    available?: Boolean;
-    friends?: Array<String>;
+    statuses?: Array<string>;
+    available?: boolean;
+    friends?: Array<string>;
     __v?:number;
+    fof?: Array<FriendEntry>;
 }

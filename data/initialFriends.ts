@@ -1,4 +1,4 @@
-import { FriendEntry } from "../types/friend_types"
+import { FriendEntry } from "../types/friend_types";
 
 const initialFriends: Array<FriendEntry> = [
   {
@@ -163,6 +163,6 @@ const initialFriends: Array<FriendEntry> = [
     friends: [],
     __v: 0
   },
-]
+];
   
-export default initialFriends
+export default initialFriends;

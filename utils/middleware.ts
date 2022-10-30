@@ -1,35 +1,35 @@
-import logger from './logger'
-import { Request, Response, NextFunction } from "express"
-import { FriendRequest } from "../types/friend_types"
-import Friend from '../models/friend'
-import { AnyZodObject } from "zod"
+import logger from './logger';
+import { Request, Response, NextFunction, RequestHandler } from "express";
+import { FriendRequest } from "../types/friend_types";
+import Friend from '../models/friend';
+import { AnyZodObject } from "zod";
 
 const requestLogger = ( req : Request, _res : Response, next : NextFunction ) => {
-  logger.info('Method:', req.method)
-  logger.info('Path:  ', req.path)
-  logger.info('Body:  ', req.body)
-  logger.info('---')
-  next()
-}
+  logger.info('Method:', req.method);
+  logger.info('Path:  ', req.path);
+  logger.info('Body:  ', req.body);
+  logger.info('---');
+  next();
+};
 
 const unknownEndpoint = (_req : Request, res : Response) => {
-  res.status(404).send({ error: 'unknown endpoint' })
-}
+  res.status(404).send({ error: 'unknown endpoint' });
+};
 
 const errorHandler = ( error: { message: any; name: string; }, _req : Request, res : Response, next : NextFunction ) => {
-  logger.error(error.message)
+  logger.error(error.message);
   if (error.name === 'CastError') {
-    return res.status(400).send({ error: 'malformatted id' })
+    return res.status(400).send({ error: 'malformatted id' });
   } else if (error.name === 'ValidationError') {
-    return res.status(400).json({ error: error.message })
+    return res.status(400).json({ error: error.message });
   }
-  next(error)
-}
+  next(error);
+};
 
-export const friendFinder = async (req : FriendRequest, _res : Response, next : NextFunction) => {
-  req.friend = await Friend.findById(req.params.id).populate("friends")
-  next()
-}
+export const friendFinder = ( async (req : FriendRequest, _res : Response, next : NextFunction) => {
+  req.friend = await Friend.findById(req.params.id).populate("friends");
+  next();
+}) as RequestHandler ;
 
 
 export const secureFriend = (schema: AnyZodObject) =>
@@ -50,4 +50,4 @@ export default {
   requestLogger,
   unknownEndpoint,
   errorHandler  
-}
+};

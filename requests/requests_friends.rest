@@ -44,13 +44,20 @@ content-type: application/json
     "friends": ["5a422a851b54a676234d1902","5a422a851b54a676234d1898"]
 }
 ### Use id returned from POST
-DELETE  http://localhost:3001/api/v1/friends/635c27c2c1a40c9805115434 HTTP/1.1
+DELETE  http://localhost:3001/api/v1/friends/635de57c3c1bb0651e363334 HTTP/1.1
 content-type: application/json
 ### Use id returned from POST
-PUT http://localhost:3001/api/v1/friends/635c27c2c1a40c9805115434 HTTP/1.1
+PUT http://localhost:3001/api/v1/friends/635de57c3c1bb0651e363334 HTTP/1.1
 content-type: application/json
 
 {
+    "img": "https://fakedetail.com/userface_image/male/male20161083966702087.png",
     "first_name": "Guillermo",
-    "last_name": "Felix"    
+    "last_name": "Felix",
+    "phone": "(820) 289-1987",
+    "address_1": "5190 Center Court Drive",
+    "city": "Spring",
+    "state": "TX",
+    "zipcode": 77370,
+    "bio": "I'm very choosy. I'm also very suspicious, and very irrational and I have a very short temper. I'm also extremely jealous and slow to forgive. Just so you know."       
 }

@@ -1,5 +1,5 @@
-import mongoose from 'mongoose'
-import { FriendEntry } from '../types/friend_types'
+import mongoose from 'mongoose';
+import { FriendEntry } from '../types/friend_types';
 
 const friendSchema = new mongoose.Schema({
   img: {
@@ -54,14 +54,14 @@ const friendSchema = new mongoose.Schema({
       ref: 'Friend',
     }
   ]
-})
+});
 
 friendSchema.set('toJSON', {
-  transform: (_document, returnedObject) => {
-    delete returnedObject.__v
+  transform: (_document, returnedObject: FriendEntry) => {
+    delete returnedObject.__v;
   }
-})
+});
 
-const Friend = mongoose.model<FriendEntry>('Friend', friendSchema)
+const Friend = mongoose.model<FriendEntry>('Friend', friendSchema);
 
-export default Friend
+export default Friend;

@@ -1,4 +1,4 @@
-import Friend from '../models/friend'
+import Friend from '../models/friend';
 
 const nonExistingFriendId = async () => {
   const friend = new Friend({
@@ -25,21 +25,21 @@ const nonExistingFriendId = async () => {
     ],
     available: true,
     friends: ["5a422a851b54a676234d1902","5a422a851b54a676234d1898"]
-  })
-  await friend.save()
-  await friend.remove()
-  return friend._id.toString()
-}
+  });
+  await friend.save();
+  await friend.remove();
+  return friend._id.toString();
+};
 
 const friendsInDb = async () => {
-  const friends = await Friend.find({})
-  return friends.map(friend => friend.toJSON())
-}
+  const friends = await Friend.find({});
+  return friends.map(friend => friend.toJSON());
+};
 
 export default{
   friendsInDb,
   nonExistingFriendId
-}
+};
 
 
 
