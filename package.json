@@ -4,11 +4,11 @@
   "description": "A Technical test !",
   "main": "index.ts",
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "scripts": {
     "start" : "NODE_ENV=production node dist/index.js",
-    "postinstall": "tsc",
+    "postinstall": "npm run tsc",
     "tsc": "tsc",
     "dev": "ts-node-dev index.ts",
     "lint": "eslint .",
