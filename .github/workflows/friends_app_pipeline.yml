@@ -35,7 +35,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "dz-friends-app"
           heroku_email: "manglynho@gmail.com"
-          healthcheck: "https://dz-friends-app.herokuapp.com/api/v1/friends"
+          healthcheck: "https://dz-friends-app.herokuapp.com"
           rollbackonhealthchefailed: true
   tag_release:
       needs: [deployment_pipeline]
